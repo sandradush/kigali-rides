@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+data/
+.env
+*.db
+*.db-shm
+*.db-wal
+client/node_modules/
+client/dist/
+mobile/node_modules/
