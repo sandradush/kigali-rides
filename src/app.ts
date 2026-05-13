@@ -50,7 +50,7 @@ export async function createApp(): Promise<{ app: Application; deps: AppDependen
   });
 
   app.use('/auth', authRouter(userStore));
-  app.use('/drivers', authenticate, requireRole('driver'), locationRouter(locationService));
+  app.use('/drivers', authenticate, locationRouter(locationService));
   app.use('/rides', authenticate, ridesRouter(matchingService, confirmationService, rideStore));
 
   app.get('/health', (_req, res) => {

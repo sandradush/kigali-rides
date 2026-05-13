@@ -29,8 +29,8 @@ export default function DriversScreen({ onDriversSeeded, seededCount }: Props) {
         drivers.map(d => updateDriverLocation(d.driverId, d.lat, d.lng, d.heading, d.speed, true))
       );
       onDriversSeeded(drivers);
-    } catch {
-      Alert.alert('Error', 'Could not reach backend. Check your IP in api.ts.');
+    } catch (e: any) {
+      Alert.alert('Seed Error', e.message ?? 'Unknown error');
     } finally {
       setSeeding(false);
     }
@@ -87,19 +87,19 @@ export default function DriversScreen({ onDriversSeeded, seededCount }: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f0f2f5' },
-  content: { padding: 16, gap: 14 },
-  title: { fontSize: 22, fontWeight: '800', color: '#1a1a2e' },
-  subtitle: { fontSize: 14, color: '#6b7280', lineHeight: 20 },
-  card: { backgroundColor: '#fff', borderRadius: 12, padding: 16, gap: 10, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 4, elevation: 2 },
-  label: { fontSize: 13, fontWeight: '600', color: '#374151' },
-  input: { borderWidth: 1, borderColor: '#d1d5db', borderRadius: 8, padding: 10, fontSize: 16, color: '#1a1a2e' },
+  content: { padding: 16 },
+  title: { fontSize: 22, fontWeight: '800', color: '#1a1a2e', marginBottom: 8 },
+  subtitle: { fontSize: 14, color: '#6b7280', lineHeight: 20, marginBottom: 16 },
+  card: { backgroundColor: '#fff', borderRadius: 12, padding: 16, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 4, elevation: 2, marginBottom: 14 },
+  label: { fontSize: 13, fontWeight: '600', color: '#374151', marginBottom: 8 },
+  input: { borderWidth: 1, borderColor: '#d1d5db', borderRadius: 8, padding: 10, fontSize: 16, color: '#1a1a2e', marginBottom: 12 },
   btn: { backgroundColor: '#4f46e5', borderRadius: 8, padding: 14, alignItems: 'center' },
   btnDisabled: { opacity: 0.5 },
   btnText: { color: '#fff', fontWeight: '700', fontSize: 15 },
-  successCard: { backgroundColor: '#f0fdf4', borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#86efac', gap: 4 },
-  successText: { color: '#16a34a', fontWeight: '700', fontSize: 14 },
+  successCard: { backgroundColor: '#f0fdf4', borderRadius: 12, padding: 14, borderWidth: 1, borderColor: '#86efac', marginBottom: 14 },
+  successText: { color: '#16a34a', fontWeight: '700', fontSize: 14, marginBottom: 4 },
   hint: { color: '#6b7280', fontSize: 13 },
-  infoCard: { backgroundColor: '#fff', borderRadius: 12, padding: 16, gap: 6, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 4, elevation: 2 },
-  infoTitle: { fontSize: 13, fontWeight: '700', color: '#1a1a2e', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 0.5 },
+  infoCard: { backgroundColor: '#fff', borderRadius: 12, padding: 16, shadowColor: '#000', shadowOpacity: 0.06, shadowRadius: 4, elevation: 2, marginBottom: 14 },
+  infoTitle: { fontSize: 13, fontWeight: '700', color: '#1a1a2e', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 0.5 },
   infoText: { fontSize: 13, color: '#374151', lineHeight: 22 },
 });
